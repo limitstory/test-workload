@@ -22,20 +22,20 @@ spec:
       limits:
         memory: {memory_limit}Mi
         cpu: 200m
-  nodeName: {node_name}
 '''
 
 node_names = ["worker1", "worker2", "worker3"]
-loop_times = 44
+loop_times = 42
 
 program_name = "parsec"
 app_name = "dedup"
 
 for i in range(len(node_names)*loop_times):
   node_name = node_names[i % len(node_names)]
-  job_manifest = job_template.format(index=i, node_name=node_name, memory_request=1130, memory_limit=1700, program_name=program_name, app_name=app_name)
+  job_manifest = job_template.format(index=i, memory_request=730, memory_limit=1100, program_name=program_name, app_name=app_name)
   with open(f'job-{i}.yaml', 'w') as f:
     f.write(job_manifest)
   os.system(f'kubectl apply -f job-{i}.yaml')
+  os.system(f'rm -f job-{i}.yaml')
   if i%len(node_names) == len(node_names)-1:
-    time.sleep(1)  # 1초 간격으로 Job 생성
+    time.sleep(1)

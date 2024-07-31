@@ -22,7 +22,6 @@ spec:
       limits:
         memory: {memory_limit}Mi
         cpu: 200m
-  nodeName: {node_name}
 """
 
 node_names = ["worker1", "worker2", "worker3"]
@@ -50,9 +49,9 @@ for percentage in memory_percentages:
         
         script_file.write("for i in range(len(node_names)*loop_times):\n")
         script_file.write("  node_name = node_names[i % len(node_names)]\n")
-        script_file.write(f"  job_manifest = job_template.format(index=i, node_name=node_name, memory_request={memory_request}, memory_limit={memory_limit}, program_name=program_name, app_name=app_name)\n")
+        script_file.write(f"  job_manifest = job_template.format(index=i, memory_request={memory_request}, memory_limit={memory_limit}, program_name=program_name, app_name=app_name)\n")
         script_file.write("  with open(f'job-{i}.yaml', 'w') as f:\n")
         script_file.write("    f.write(job_manifest)\n")
         script_file.write("  os.system(f'kubectl apply -f job-{i}.yaml')\n")
         script_file.write("  if i%len(node_names) == len(node_names)-1:\n")
-        script_file.write("    time.sleep(1)  # 1초 간격으로 Job 생성\n")
+        script_file.write("    time.sleep(1)\n")
