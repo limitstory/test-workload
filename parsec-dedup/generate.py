@@ -29,7 +29,7 @@ loop_times = 42
 
 program_name = "parsec"
 app_name = "dedup"
-set_memory_limit = 1100
+set_memory_limit = 1700
 
 
 memory_percentages = range(10, 21, 1)  # 100%부터 200%까지 10% 단위로 증가

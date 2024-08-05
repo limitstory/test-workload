@@ -25,14 +25,14 @@ spec:
 '''
 
 node_names = ["worker1", "worker2", "worker3"]
-loop_times = 42
+loop_times = 2
 
 program_name = "parsec"
-app_name = "dedup"
+app_name = "raytrace"
 
 for i in range(len(node_names)*loop_times):
   node_name = node_names[i % len(node_names)]
-  job_manifest = job_template.format(index=i, memory_request=1130, memory_limit=1700, program_name=program_name, app_name=app_name)
+  job_manifest = job_template.format(index=i, memory_request=1300, memory_limit=1300, program_name=program_name, app_name=app_name)
   with open(f'job-{i}.yaml', 'w') as f:
     f.write(job_manifest)
   os.system(f'kubectl apply -f job-{i}.yaml')

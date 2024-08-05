@@ -32,7 +32,7 @@ app_name = "dedup"
 
 for i in range(len(node_names)*loop_times):
   node_name = node_names[i % len(node_names)]
-  job_manifest = job_template.format(index=i, memory_request=1000, memory_limit=1100, program_name=program_name, app_name=app_name)
+  job_manifest = job_template.format(index=i, memory_request=1540, memory_limit=1700, program_name=program_name, app_name=app_name)
   with open(f'job-{i}.yaml', 'w') as f:
     f.write(job_manifest)
   os.system(f'kubectl apply -f job-{i}.yaml')
