@@ -29,7 +29,7 @@ loop_times = 20
 
 program_name = "splash2x"
 app_name1 = "ocean_cp"
-app_name1 = "ocean-cp"
+app_name2 = "ocean-cp"
 
 for i in range(len(node_names)*loop_times):
   node_name = node_names[i % len(node_names)]

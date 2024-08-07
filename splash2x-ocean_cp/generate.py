@@ -47,7 +47,7 @@ for percentage in memory_percentages:
         script_file.write(f"loop_times = {loop_times}\n\n")
         script_file.write(f"program_name = \"{program_name}\"\n")
         script_file.write(f"app_name1 = \"{app_name1}\"\n")
-        script_file.write(f"app_name1 = \"{app_name2}\"\n\n")
+        script_file.write(f"app_name2 = \"{app_name2}\"\n\n")
         
         script_file.write("for i in range(len(node_names)*loop_times):\n")
         script_file.write("  node_name = node_names[i % len(node_names)]\n")
