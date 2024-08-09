@@ -32,7 +32,7 @@ app_name = "dedup"
 set_memory_limit = 1700
 
 
-memory_percentages = range(10, 21, 1)  # 100%부터 200%까지 10% 단위로 증가
+memory_percentages = range(10, 26, 1)  # 100%부터 200%까지 10% 단위로 증가
 
 for percentage in memory_percentages:
     memory_request = set_memory_limit // percentage * 10
